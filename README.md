@@ -56,5 +56,9 @@ Then open your browser and go to:
 
 http://localhost:3000
 
+### ** Run Rspecs**
+
+bundle exec rspec
+
 
 
