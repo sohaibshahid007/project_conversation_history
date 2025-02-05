@@ -1,0 +1,9 @@
+<%= turbo_stream.replace "flash" do %>
+  <%= render "shared/flash" %>
+<% end %>
+
+<%= turbo_stream.replace "status_changes_history" do %>
+  <%= turbo_frame_tag "status_changes_history" do %>
+    <%= render 'projects/status_changes_section', project: @project, status_history: @project.status_changes %>
+  <% end %>
+<% end %>

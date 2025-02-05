@@ -1,0 +1,27 @@
+<div class="col-lg-4 col-md-6 mb-4">
+  <div class="card h-100 shadow-sm border-0 rounded">
+    <div class="card-body">
+      <!-- Project Title -->
+      <h5 class="card-title fw-bold text-dark">
+        <i class="bi bi-file-earmark-text"></i>
+        <%= project.title %>
+      </h5>
+
+      <!-- Project Description -->
+      <p class="card-text text-muted"><%= truncate(project.description, length: 100) %></p>
+
+      <!-- Status Label -->
+      <p class="text-muted">
+        <i class="bi bi-info-circle"></i> Status:
+        <span class="badge <%= project_status_badge_class(project) %>">
+          <%= project.status.titleize %>
+        </span>
+      </p>
+
+      <!-- View Project Button -->
+      <div class="d-flex justify-content-end">
+        <%= link_to 'View Project', project_path(project), class: 'btn btn-outline-primary btn-sm', data: { turbo_stream: true } %>
+      </div>
+    </div>
+  </div>
+</div>

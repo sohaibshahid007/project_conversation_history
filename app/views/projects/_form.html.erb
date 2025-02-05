@@ -1,0 +1,47 @@
+<div class="container">
+  <h1 class="my-4 text-primary"><i class="bi bi-folder-plus"></i> New Project</h1>
+
+  <div class="card shadow-sm border-0 rounded-3">
+    <div class="card-body p-4">
+      <%= form_with model: project, local: true, data: { turbo: false }, class: "needs-validation" do |form| %>
+
+        <!-- Validation Errors -->
+        <% if project.errors.any? %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h5 class="mb-2"><i class="bi bi-exclamation-triangle-fill"></i> Please fix the following errors:</h5>
+            <ul class="mb-0">
+              <% project.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+
+        <!-- Title Input -->
+        <div class="mb-3">
+          <%= form.label :title, class: "form-label fw-bold" %>
+          <%= form.text_field :title, class: "form-control form-control-lg", required: true, placeholder: "Enter project title" %>
+        </div>
+
+        <!-- Description Input -->
+        <div class="mb-3">
+          <%= form.label :description, class: "form-label fw-bold" %>
+          <%= form.text_area :description, class: "form-control", rows: 4, required: true, placeholder: "Enter project description" %>
+        </div>
+
+        <!-- Status Dropdown -->
+        <div class="mb-3">
+          <%= form.label :status, class: "form-label fw-bold" %>
+          <%= form.select :status, Project.statuses.keys.map { |s| [s.titleize, s] }, {}, class: "form-select form-select-lg" %>
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-end gap-2">
+          <%= link_to "Cancel", projects_path, class: "btn btn-outline-secondary btn-lg" %>
+          <%= form.submit "Create Project", class: "btn btn-primary btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

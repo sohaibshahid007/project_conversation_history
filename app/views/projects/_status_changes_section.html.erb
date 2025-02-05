@@ -1,0 +1,45 @@
+<div class="row mt-4">
+  <!-- Status Change History -->
+  <div class="col-lg-8">
+    <div class="card shadow-sm border-0">
+      <div class="card-body">
+        <h3 class="h5 text-warning mb-3"><i class="bi bi-arrow-repeat"></i> Status Changes</h3>
+
+        <% if status_history.any? %>
+          <ul class="list-group">
+            <% status_history.each do |entry| %>
+              <% unless entry.is_a?(Comment) %>
+                <li class="list-group-item">
+                  <strong class="text-warning"><i class="bi bi-arrow-repeat"></i> Status Change:</strong>
+                  Changed from
+                  <span class="badge bg-danger"><%= entry.old_status %></span>
+                  to
+                  <span class="badge bg-success"><%= entry.new_status %></span>
+                  <br>
+                  <small class="text-muted"><i class="bi bi-clock"></i> <%= entry.created_at.strftime("%Y-%m-%d %H:%M") %></small>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% else %>
+          <p class="text-muted">No status changes yet.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status Change Form -->
+  <div class="col-lg-4">
+    <div class="card p-3 shadow-sm">
+      <h5 class="text-warning"><i class="bi bi-arrow-repeat"></i> Change Project Status</h5>
+
+      <%= form_with model: [@project, StatusChange.new], local: true, data: { turbo_stream: true } do |form| %>
+        <div class="mb-3">
+          <%= form.label :new_status, 'Change Project Status:', class: 'mb-1' %>
+          <%= form.select :new_status, Project.statuses.keys.map { |s| [s.titleize, s] }, { selected: @project.status }, class: 'form-select' %>
+        </div>
+        <%= form.submit 'Update Status', class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>

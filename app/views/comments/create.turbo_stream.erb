@@ -1,0 +1,9 @@
+<%= turbo_stream.replace "flash" do %>
+  <%= render "shared/flash" %>
+<% end %>
+
+<%= turbo_stream.replace "comments_history" do %>
+  <%= turbo_frame_tag "comments_history" do %>
+    <%= render 'projects/comments_form_section', project: @project, comment: @comment, comments_history: @project.comments %>
+  <% end %>
+<% end %>
