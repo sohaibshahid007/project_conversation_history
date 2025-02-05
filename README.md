@@ -50,7 +50,7 @@ rails db:seed
 
 ### **  Start the Server**
 
-rails s
+bin/dev
 
 Then open your browser and go to:
 
