@@ -1,24 +1,60 @@
-# README
+# 🚀 Project Conversation History
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a **Ruby on Rails 7.2.2** application that allows users to:
+- **Create projects** with a title, description, and status.
+- **Comment on projects** to track discussions.
+- **Change project status** (Active, On Hold, Completed).
+- **View project conversation history** (comments & status changes).
 
-Things you may want to cover:
+The application is built using:
+- **Ruby 3.1.2**
+- **Rails 7.2.2**
+- **Node.js 18.20.4**
+- **Yarn**
+- **Bootstrap 5.3**
+- **RSpec for testing**
+- **Turbo & Hotwire for instant UI updates**
 
-* Ruby version
+---
 
-* System dependencies
+## **📌 Installation Guide**
 
-* Configuration
+### ** Prerequisites**
+Ensure you have the following installed:
 
-* Database creation
+- **Ruby**: `3.1.2`
+- **Rails**: `7.2.2`
+- **Node.js**: `18.20.4`
+- **Yarn**: `Latest Version`
+- **PostgreSQL** (or SQLite for local development)
 
-* Database initialization
+---
 
-* How to run the test suite
+### ** Clone the Repository**
+```bashgit
+clone https://github.com/yourusername/project-conversation-history.git cd project-conversation-history
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### ** Install Dependencies**
 
-* ...
+bundle install
+yarn install
+
+
+### ** Set Up the Database**
+
+rails db:create
+rails db:migrate
+rails db:seed
+
+
+### **  Start the Server**
+
+rails s
+
+Then open your browser and go to:
+
+http://localhost:3000
+
+
+

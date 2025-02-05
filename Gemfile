@@ -43,11 +43,13 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
   gem 'byebug'
+  gem 'faker'
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -62,4 +64,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "rspec-rails", "~> 7.1"
+  gem 'shoulda-matchers', '~> 6.0'
+  gem 'rails-controller-testing'
 end
